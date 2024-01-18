@@ -61,8 +61,8 @@
             Console.WriteLine("\r\nPodaj nazwisko i wciśnij enter");
             surname = Console.ReadLine();
             Console.WriteLine("\r\nPodaj numer telefonu i wciśnij enter");
-            answer = Console.ReadLine();
-            uint.TryParse(answer, out uint phoneNr);
+            string phoneNr = Console.ReadLine();
+                                //uint.TryParse(answer, out uint phoneNr);
             Console.WriteLine("\r\nPodaj email i wciśnij enter");
             string email = Console.ReadLine();
             Console.WriteLine("\r\nPodaj wzrost w cm i wciśnij enter");
