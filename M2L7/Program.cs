@@ -171,42 +171,12 @@ namespace M2L7
                        if (ex != 0) {   Console.WriteLine($"\r\nZADANIE {ex}"); }
                         
                         break;
-                case 8:     //kwalifikacja NA STUDIA zmienna 
-                        /* Wynik z Matury z matematyki powyżej 70
-                            Wynik z fizyki powyżej 55
-                            Wynik z chemii powyżej 45
-                            Łączny wynik z 3 przedmiotów powyżej 180
-                            Albo
-                            Wynik z matematyki i jednego przedmiotu powyżej 150
-                        maxFizChem =fiz>chem? fiz:chem
-                        sum= mat+fiz+chem ; sum2 = mat + maxFizChem ;
-                        answer = "NIE dopuszczony";
-                       if ((mat>70 && fiz>55 && chem>45 && sum>180 ) || (sum2>150)) answer = "dopuszczony";
-                        */
-                        int mat, fiz, chem, sum, sum2, maxFizChem;
-                        answer = "NIE dopuszczony";
-                        Console.WriteLine(" Sprawdźmy czy wyniki maturalne kandydata pozwolą mu się dostać na studia. \r\nPodaj wynik z matematyki : ");
-                        if (Int32.TryParse(Console.ReadLine(), out mat))
-                        {
-                            Console.WriteLine("Podaj wynik z FIZYKI :");
-                            if (Int32.TryParse(Console.ReadLine(), out fiz)) 
-                            {
-                                Console.WriteLine("Podaj wynik z CHEMII :");
-                                if (Int32.TryParse(Console.ReadLine(), out chem)) 
-                                {
-                                    maxFizChem = fiz > chem ? fiz : chem;
-                                    sum = mat + fiz + chem;
-                                    sum2 = mat + maxFizChem;
-                                    if (((mat > 70 && fiz > 55 && chem > 45) && sum > 180) || (sum2 > 150)) answer = "dopuszczony";
-                                    Console.WriteLine($"Kandydat {answer} do rekrutacji");
-                                }
-                                else Console.WriteLine("Wpisałeś niepoprawną liczbę.");
-                            }
-                            else Console.WriteLine("Wpisałeś niepoprawną liczbę.");
-                        }
-                        else Console.WriteLine("Wpisałeś niepoprawną liczbę.");
-                 //-----------------------------------------------------------------------------------------------
-                            Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                case 8:
+                        
+                        Console.WriteLine(" tekst zad8 ");
+
+                                                    
+                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                        if (ex != 0) {   Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
