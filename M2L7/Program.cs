@@ -5,7 +5,7 @@ namespace M2L7
     internal class Program
     {
         static void Main(string[] args)
-        {                           // IN PROGRESS (6/13)
+        {                           // IN PROGRESS (7/13)
                                     //Wybór zadania .
             uint ex = 1;
             Console.WriteLine("\r\nWitaj w Module 2 Lekcja 7  ZADANIA\r\n Wpisz numer zadania lub 0 (zero) aby zakończyć: ");
@@ -147,9 +147,25 @@ namespace M2L7
                        if (ex != 0) {   Console.WriteLine($"\r\nZADANIE {ex}"); }
                         
                         break;
-                case 7: 
-                        Console.WriteLine(" tekst ");
+                case 7: // NAJWIĘKSZA Z 3 LICZB zmienna 'maxNr'  "79 jest największa z podanych"
+                        int i = 1;
+                        float readNr,maxNr=0;
+                        Console.WriteLine(" Wskazanie największej z 3ech liczb. Czyli MAX. ");
+                        while (i < 4) {
+                            Console.WriteLine($"\r\n{i}. Podaj liczbę :");
+                            if (float.TryParse(Console.ReadLine(), out readNr))
+                            {
+                                //i++;
+                                if (i == 1) maxNr = readNr;
+                                else maxNr = maxNr > readNr ? maxNr : readNr;
+                                i++;
+                            }
+                            else { Console.WriteLine("Wpisałeś niepoprawną liczbę."); i = 10; }
+                        };
+                        if (i == 4) Console.WriteLine($"\r\n{maxNr} jest największa z podanych");
+                        else Console.WriteLine($"Możesz zacząć od nowa.");
 
+                        //-------------------------------------------------------------------------------------------------------------------
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                        if (ex != 0) {   Console.WriteLine($"\r\nZADANIE {ex}"); }
@@ -157,7 +173,7 @@ namespace M2L7
                         break;
                 case 8:
                         
-                        Console.WriteLine(" tekst ");
+                        Console.WriteLine(" tekst zad8 ");
 
                                                     
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
@@ -165,7 +181,7 @@ namespace M2L7
                        if (ex != 0) {   Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                 case 9:
-                        Console.WriteLine(" tekst ");
+                        Console.WriteLine(" tekst zad9");
 
                                                     
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
@@ -175,7 +191,7 @@ namespace M2L7
                         break;
                 case 10:
                         
-                        Console.WriteLine(" tekst ");
+                        Console.WriteLine(" tekst zad10");
 
                                                     
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
@@ -185,7 +201,7 @@ namespace M2L7
                         break;
                 case 11:
                         
-                        Console.WriteLine(" tekst ");
+                        Console.WriteLine(" tekst zad11");
 
                                                     
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
@@ -195,7 +211,7 @@ namespace M2L7
                         break;
                 case 12:
                         
-                        Console.WriteLine(" tekst ");
+                        Console.WriteLine(" tekst zad12");
 
                                                     
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
@@ -205,7 +221,7 @@ namespace M2L7
                         break;
                 case 13:
                         
-                        Console.WriteLine(" tekst ");
+                        Console.WriteLine(" tekst zad13");
 
                                                     
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
