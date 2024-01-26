@@ -241,7 +241,7 @@ namespace M2L7
 
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); };
                         break;
-                    case 10: // BOKI TRÓjKĄTA
+                    case 10: // BOKI TRÓjKĄTA, a10,b10, c10
                              // a<b+c ; b<a+c ; c<a+b ;
                         float a10, b10, c10;
                         answer = "";
@@ -283,12 +283,27 @@ namespace M2L7
 
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 11:
+                    case 11: // OCENA SŁOWNIE, zmienna 'grade'
+                        byte grade;
+                        answer = "";
+                        Console.WriteLine("Zamiana oceny liczbowej na słowną. Podaj wartość liczbową oceny :");
+                        if (byte.TryParse(Console.ReadLine(), out grade))
+                        {
+                            answer = grade switch
+                            {
+                                1 => "Niedostateczny",
+                                2 => "Dopuszczający",
+                                3 => "Dostateczny",
+                                4 => "Dobry",
+                                5 => "Bardzo dobry",
+                                6 => "Celujący",
+                                _ => "Zła wartość"
+                            };
+                        }
+                        else answer = "Zła wartość";
+                        Console.WriteLine($"{answer}");
 
-                        Console.WriteLine(" tekst zad11");
-
-
-                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                            Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
 
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
