@@ -213,7 +213,7 @@ namespace M2L7
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 9:     // TEMPERATURA zmienna 'temp'
+                    case 9:     // TEMPERATURA, zmienna 'temp'
                         /*Temp < 0 – cholernie piździ
                             Temp 0 – 10 – zimno
                             Temp 10 – 20 – chłodno
@@ -241,9 +241,41 @@ namespace M2L7
 
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); };
                         break;
-                    case 10:
+                    case 10: // BOKI TRÓjKĄTA
+                             // a<b+c ; b<a+c ; c<a+b ;
+                        float a10, b10, c10;
+                        answer = "";
+                        Console.WriteLine("Czy trójkąt można zbudować z boków o dowolnej długości ? Sprawdźmy. Podaj długość pierwszego boku :");
+                        if (float.TryParse(Console.ReadLine(), out a10))
+                        {
+                            if (a10 > 0)
+                            {
+                                Console.WriteLine("Podaj długość drugiego boku :");
+                                if (float.TryParse(Console.ReadLine(), out b10))
+                                {
+                                    if (b10 > 0)
+                                    {
+                                        Console.WriteLine("Podaj długość trzeciego boku :");
+                                        if (float.TryParse(Console.ReadLine(), out c10))
+                                        {
+                                            if (c10 > 0)
+                                            {
+                                                if (a10 < (b10 + c10) && b10 < (a10 + c10) && c10 < (a10 + b10)) answer = "Można zbudować trójkąt.";
+                                                else answer = "NIE można zbudować trójkąta.";
+                                            }
+                                            else answer = "Długość musi być większa od 0.";
+                                        }
+                                        else answer = "Coś poszło nie tak, może źle wpisałeś długość.";
+                                    }
+                                    else answer = "Długość musi być większa od 0.";
+                                }
+                                else answer = "Coś poszło nie tak, może źle wpisałeś długość.";
+                            }
+                            else answer = "Długość musi być większa od 0.";
 
-                        Console.WriteLine(" tekst zad10");
+                        }
+                        else answer = "Coś poszło nie tak, może źle wpisałeś długość.";
+                        Console.WriteLine($"{answer}");
 
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
