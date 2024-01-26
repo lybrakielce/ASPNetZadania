@@ -308,9 +308,27 @@ namespace M2L7
 
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 12:
+                    case 12: // DNI TYGODNIA LICZBA NA SŁOWO, zmienna day
 
-                        Console.WriteLine(" tekst zad12");
+                        byte day;
+                        answer = "";
+                        Console.WriteLine("Zamiana nr dnia tygodnia na nazwę dnia. Podaj nr dnia tygodnia :");
+                        if (byte.TryParse(Console.ReadLine(), out day))
+                        {
+                            answer = day switch
+                            {
+                                1 => "Poniedziałek",
+                                2 => "Wtorek",
+                                3 => "Środa",
+                                4 => "Czwartek",
+                                5 => "Piątek",
+                                6 => "Sobota",
+                                7 => "Niedziela",
+                                _ => "Zła wartość"
+                            } ;
+                        }
+                        else answer = "Zła wartość";
+                        Console.WriteLine($"{answer}");
 
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
