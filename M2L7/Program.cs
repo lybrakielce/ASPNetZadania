@@ -5,7 +5,7 @@ namespace M2L7
     internal class Program
     {
         static void Main(string[] args)
-        {                           // IN PROGRESS (12/13)
+        {                           // PROGRES (13/13)
                                     //Wybór zadania .
             uint ex = 1; // numer zadania zainicjowany jako 1 żeby 0 użyć do wyjścia 
             Console.WriteLine("\r\nWitaj w Module 2 Lekcja 7  ZADANIA\r\n Wpisz numer zadania lub 0 (zero) aby zakończyć: ");
@@ -238,7 +238,6 @@ namespace M2L7
                         //-----------------------------------------------------------------------------------------------------
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
-
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); };
                         break;
                     case 10: // BOKI TRÓjKĄTA, a10,b10, c10
@@ -277,10 +276,8 @@ namespace M2L7
                         else answer = "Coś poszło nie tak, może źle wpisałeś długość.";
                         Console.WriteLine($"{answer}");
 
-
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
-
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                     case 11: // OCENA SŁOWNIE, zmienna 'grade'
@@ -305,7 +302,6 @@ namespace M2L7
 
                             Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
-
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                     case 12: // DNI TYGODNIA LICZBA NA SŁOWO, zmienna day
@@ -328,34 +324,52 @@ namespace M2L7
                             } ;
                         }
                         else answer = "Zła wartość";
-                        Console.WriteLine($"{answer}");
-
+                        Console.WriteLine(answer);
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
-
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 13:
-
-                        Console.WriteLine(" tekst zad13");
-
+                    case 13:    // PROSTY KALKULATOR , zmienne a13,b13,nr13,result
+                        float a13, b13;
+                        byte nr13;
+                            answer = "";
+                        Console.WriteLine(" Prosty kalkulator. ");
+                        Console.WriteLine(" Podaj pierwszą liczbę :");
+                        if (float.TryParse(Console.ReadLine(), out a13)) 
+                        {
+                            Console.WriteLine(" Podaj drugą liczbę :");
+                            if (float.TryParse(Console.ReadLine(), out b13))
+                            {
+                                Console.WriteLine(" Podaj nr operacji do wykonania : \r\n 1. Dodawanie \r\n 2. Odejmowanie \r\n 3. Mnożenie \r\n 4. Dzielenie");
+                                if (byte.TryParse(Console.ReadLine(), out nr13))
+                                {
+                                    answer = nr13 switch
+                                    {
+                                        1 => ("Twój wynik to " + (a13 + b13)).ToString(),
+                                        2 => ("Twój wynik to " + (a13 - b13)).ToString(),
+                                        3 => ("Twój wynik to " + (a13 * b13)).ToString(),
+                                        4 => ("Twój wynik to " + (a13 / b13)).ToString(),
+                                        _ => "Zły wybór operacji."
+                                    };
+                                }
+                                else answer = "Niepoprawna wartość";
+                            }
+                            else answer = "Niepoprawna wartość";
+                        }
+                        else answer = "Niepoprawna wartość";
+                        Console.WriteLine(answer);
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
-
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                     //EXIT gdy od razu wpisano 0
                     case 0:
-                        // ex = 0;
-                        // Console.Write(" none. Good BYE,");
                         break;
                 }
 
             }
-
-            //Console.Write(" EXIT. Good BYE, press Enter.");
             Console.Write(" KONIEC PROGRAMU. Do widzenia. Naciśnij Enter.");
             Console.ReadLine();
         }
