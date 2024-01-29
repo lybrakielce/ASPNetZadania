@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2L4TypyDanych", "M2L4\M2L4TypyDanych.csproj", "{FB2B5AA2-6227-4313-963B-0BBDC23FEEA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2L7", "M2L7\M2L7.csproj", "{833EBF2B-D664-4F4F-B9AE-BBED5F8CB067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M2L7", "M2L7\M2L7.csproj", "{833EBF2B-D664-4F4F-B9AE-BBED5F8CB067}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M2L8", "M2L8\M2L8.csproj", "{6B2CB5D6-16A4-4B99-8041-A10C2FEA1E79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{833EBF2B-D664-4F4F-B9AE-BBED5F8CB067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{833EBF2B-D664-4F4F-B9AE-BBED5F8CB067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{833EBF2B-D664-4F4F-B9AE-BBED5F8CB067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B2CB5D6-16A4-4B99-8041-A10C2FEA1E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2CB5D6-16A4-4B99-8041-A10C2FEA1E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2CB5D6-16A4-4B99-8041-A10C2FEA1E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2CB5D6-16A4-4B99-8041-A10C2FEA1E79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
