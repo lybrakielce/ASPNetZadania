@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Security.Cryptography;
 
 namespace M2L8
 {
@@ -123,19 +124,35 @@ namespace M2L8
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
+                    case 6:     /*dla liczb od 0 do 20 obliczy sumę wg wzoru:
+                                1 + ½ +1 / 3 + ¼ itd.
+                                1/1+...+1/n */
+                        float sum6=0 , i6=0;
+                        Console.Write("Częściowa suma szeregu harmonicznego - liczba harmoniczna H[20] = ");
+                        do
+                        {
+                            sum6 = sum6 + (1 / (i6 + 1));
+                                    //Console.Write("suma = "+sum6);
+                            i6++;
+                        }
+                        while (i6 < 20);
+                        Console.Write(sum6);
+
+                       Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                        UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
+                        if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 6:
+                    case 7:
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                        break;
-                    case 7:
-
-                        break;
                     case 8:
 
+                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                        UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
+                        if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                     case 9:
 
