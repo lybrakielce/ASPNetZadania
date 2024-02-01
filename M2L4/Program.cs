@@ -6,10 +6,9 @@
         {
      //Moduł 2
         //Zadanie 1. Deklaracja zmiennych z danymi pracownika.
-            string name, surname;
+            string name, surname,pesel,id;
             byte age;
             char gender;
-            ulong pesel,id;
             Console.WriteLine("Zadanie 1. Deklaracja zmiennych z danymi pracownika:");
             Console.WriteLine("string name, surname;");
             Console.WriteLine("byte age;");
