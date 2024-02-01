@@ -56,7 +56,7 @@
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                     case 3:     // CIĄG FIBONACCIEGO
-                        uint x3 = 0,a3=0,b3=1,suma3;  // x3 - wprowadzana ilość liczb ; a3,b3 - sumowane liczby ciągu
+                        uint x3 = 0,a3=0,b3=1,sum3;  // x3 - wprowadzana ilość liczb ; a3,b3 - sumowane liczby ciągu
                         i = 3;
                         Console.WriteLine("Ciąg Fibonacciego. Podaj ilość liczb ciągu :");
                         UInt32.TryParse(Console.ReadLine(), out x3);
@@ -64,9 +64,9 @@
                         Console.Write("0 ; 1 ; ");
                         do
                         {
-                            suma3 = a3 + b3;
-                            Console.Write(suma3+" ; ");
-                            a3 = b3;    b3 = suma3;
+                            sum3 = a3 + b3;
+                            Console.Write(sum3+" ; ");
+                            a3 = b3;    b3 = sum3;
                             i++;
                         }
                         while (i <= x3);
@@ -76,8 +76,35 @@
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
 
                         break;
-                    case 4:
+                    case 4:     /* po podaniu liczby całkowitej wyświetli piramidę liczb od 1 do podanej
+                                liczby w formie jak poniżej:
+                                1
+                                2 3
+                                4 5 6
+                                7 8 9 10
+                                */
+                        // x4 - podana liczba
+                        // y4 - wyswietlana liczba
+                        // column - liczba  kolumn 
+                        uint row = 1,x4,y4=1,column=1,a4;
+                        Console.WriteLine("Piramida z liczb. Podaj ostatnią liczbę :");
+                        UInt32.TryParse(Console.ReadLine(), out x4);
+                        Console.WriteLine("");
+                        do
+                        {
+                            for (i=1;i<(column+1);i++)  // column+1 to nowa ilosc kolumn dla nastepnego wiersza
+                            {
+                                Console.Write(y4+" ");
+                                y4++;
+                            }
+                            Console.WriteLine("");
+                            column++;
+                        }
+                        while(y4 <= x4);
 
+                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                        UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
+                        if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                     case 5:
 
