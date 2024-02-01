@@ -1,4 +1,6 @@
-﻿namespace M2L8
+﻿using System.Numerics;
+
+namespace M2L8
 {
     internal class Program
     {
@@ -106,11 +108,28 @@
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 5:
+                    case 5: /* dla liczb od 1 do 20 wyświetli na ekranie ich 3 potęgę.
+                             * */
+                        i = 1;
+                        Console.WriteLine("Liczby 1 - 20 do potęgi 3 :");
+                        do {
+                            Console.WriteLine(i + ": " + Math.Pow(i,3));
 
+                            i++;    
+                        }
+                        while (i <= 20);
+
+                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                        UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
+                        if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
+                        break;
                         break;
                     case 6:
 
+                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                        UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
+                        if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
+                        break;
                         break;
                     case 7:
 
