@@ -16,7 +16,7 @@ namespace M2L8
             while (ex != 0)
             {
                 //Realizacja kolejnych zadań w case.
-                string answer;
+                //string answer;
                 switch (ex)
                 {
                     case 1: // ile liczb pierwszych w zakresie 0-100
@@ -89,19 +89,19 @@ namespace M2L8
                         // x4 - podana liczba
                         // y4 - wyswietlana liczba
                         // column - liczba  kolumn 
-                        uint row = 1,x4,y4=1,column=1,a4;
+                        uint x4,y4=1,column4=1;
                         Console.WriteLine("Piramida z liczb. Podaj ostatnią liczbę :");
                         UInt32.TryParse(Console.ReadLine(), out x4);
                         Console.WriteLine("");
                         do
                         {
-                            for (i=1;i<(column+1);i++)  // column+1 to nowa ilosc kolumn dla nastepnego wiersza
+                            for (i=1;i<(column4+1);i++)  // column+1 to nowa ilosc kolumn dla nastepnego wiersza
                             {
                                 Console.Write(y4+" ");
                                 y4++;
                             }
                             Console.WriteLine("");
-                            column++;
+                            column4++;
                         }
                         while(y4 <= x4);
 
@@ -109,8 +109,9 @@ namespace M2L8
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 5: /* dla liczb od 1 do 20 wyświetli na ekranie ich 3 potęgę.
-                             * */
+
+                    case 5:      /* dla liczb od 1 do 20 wyświetli na ekranie ich 3 POTĘGĘ.
+                                 */
                         i = 1;
                         Console.WriteLine("Liczby 1 - 20 do potęgi 3 :");
                         do {
@@ -142,7 +143,41 @@ namespace M2L8
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
+
                     case 7:
+                        /* diament o krótszej
+                         przekątnej o długości wprowadzonej przez użytkownika
+                         */
+                        int x7,row7=1;
+                        int spaces7;
+                        Console.WriteLine("Diament. Podaj długość krótszej przekątnej :");
+                        Int32.TryParse(Console.ReadLine(), out x7);
+                        x7 = Math.Abs(x7);
+                        Console.WriteLine("");
+                        // Dla nieparzystej dlugosci przekatnej 'x7'
+                        // tyle samo wierszy ('row7') i kolumn ('column7')
+                        // spaces7 - ilość spacji do wpisania w wierszu
+                        spaces7=(x7 - 1) / 2; 
+                        do
+                        {
+                            if (spaces7 != 0)
+                            {
+                                for (i = 1; i <= Math.Abs(spaces7); i++)
+                                { 
+                                    Console.Write(" ");
+                                }
+                            }
+
+                            for (i = 1; i <= ( x7 - (Math.Abs(spaces7) * 2) ); i++)
+                            {
+                                Console.Write("*");
+                            }
+                                spaces7--;
+
+                            Console.WriteLine("");
+                            row7++;                          
+                        }
+                        while (row7 <= x7);
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
@@ -156,9 +191,15 @@ namespace M2L8
                         break;
                     case 9:
 
+                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                        UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
+                        if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                     case 10:
 
+                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                        UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
+                        if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
                     //EXIT gdy od razu wpisano 0
                     case 0:
