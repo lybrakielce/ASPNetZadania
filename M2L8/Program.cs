@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Numerics;
 using System.Security.Cryptography;
 
 namespace M2L8
@@ -183,13 +184,27 @@ namespace M2L8
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 8:
+                    case 8: /*odwróci wprowadzony przez użytkownika ciąg znaków. Np.
+                                Testowe dane:
+                                Abcdefg
+                                Rezultat
+                                Gfedcba
+                             * */
+                        Console.WriteLine("\r\nWpisz ciąg znaków do odwrócenia :");
+                       string read8= Console.ReadLine();
+                       int i8 ;
+                        Console.WriteLine($"WYNIK : ");
+                        for (i8 = read8.Length-1; i8>=0; i8--)
+                        {
+                            Console.Write(read8[i8]);
+                            //string answer = ""+read8[i8-1];
+                        }
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 9:
+                    case 9: 
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
