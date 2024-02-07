@@ -8,7 +8,7 @@ namespace M2L8
     {
         static void Main(string[] args)
         {
-            // PROGRES (3/10)
+            // PROGRES (9/10)
             //Wybór zadania .
             uint ex = 1; // numer zadania zainicjowany jako 1 żeby 0 użyć do wyjścia 
             Console.WriteLine("\r\nWitaj w Module 2 Lekcja 8  ZADANIA dot. pętli. \r\n Wpisz numer zadania lub 0 (zero) aby zakończyć: ");
@@ -204,15 +204,60 @@ namespace M2L8
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 9: 
+                    case 9:     //program, który zamieni liczbę dziesiętną na liczbę binarną.
+                                // tylko CAŁKOWITE dodatnie (naturalne)
+                        uint x9;
+                        Console.WriteLine("Podaj liczbę naturalną do konwersji na system binarny : ");
+                        uint.TryParse(Console.ReadLine(), out x9);
+                        uint remainder9,decimalNr=x9;
+                        string binaryNr="";
+                        while (x9>0) {
+                           
+                            remainder9 = x9 % 2;
+                            binaryNr = remainder9 + binaryNr;
+                            x9 /= 2;
+                        }
+
+                        Console.WriteLine($"Zapis binarny liczby {decimalNr} to : {binaryNr} ");
 
                         Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
-                    case 10:
-
-                        Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
+                    case 10:    // program, który znajdzie najmniejszą wspólną wielokrotność dla zadanych 2 liczb.
+                                // NWW dotyczy liczb naturalnych
+                        /*   NWD :
+                            1.Wprowadź wartość zmiennej a.
+                            2.Wprowadź wartość zmiennej b.
+                            3.Zmiennej r przypisz wartość reszty z dzielnie a przez b (operacja -> r=a%b).
+                            4.Jeżeli r=0 przejdź do punktu 5, w przeciwnym wypadku przejdź do punktu 7.
+                            5.Wyprowadź wynik - zmienna b.
+                            6.Zakończ program.
+                            7.Zmiennej a przypisz wartość zmiennej b (operacja -> a=b)
+                            8.Zmiennej b przypisz wartość zmiennej r (operacja -> b=r)
+                            9.Przejdź do punktu 3.
+                             NWW = a*b/NWD
+                         * */
+                        uint a10, b10, remainder10, nww;
+                        Console.WriteLine("NWW - najmniejsza wspólna wielokrotność dla zadanych 2 liczb");
+                        Console.WriteLine("Wprowadż pierwszą liczbę :");
+                        uint.TryParse(Console.ReadLine(), out a10);
+                        Console.WriteLine("Wprowadż drugą liczbę :");
+                        uint.TryParse(Console.ReadLine(), out b10);
+                         nww = a10 * b10;
+                        do
+                        {
+                            remainder10 = a10 % b10;
+                            if (remainder10 != 0)
+                            { 
+                            a10 = b10;
+                            b10 = remainder10;
+                            }
+                        }
+                        while (remainder10 != 0);
+                        nww = nww / b10;
+                        Console.WriteLine($"\r\n NWW = {nww}");
+                            Console.WriteLine("\r\nWpisz numer następnego zadania lub 0 (zero) aby wyjść :");
                         UInt32.TryParse(Console.ReadLine(), out ex); Console.Clear();
                         if (ex != 0) { Console.WriteLine($"\r\nZADANIE {ex}"); }
                         break;
