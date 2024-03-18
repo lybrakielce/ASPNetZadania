@@ -4,31 +4,33 @@
     {
         static void Main()     // IN PROGRESS
         {
-            // Klasa ListOfNotes wczytuje plik txt z listą lekcji
+            // Klasa (obiekt) ListOfNotes wczytuje plik txt z listą lekcji
             
             ListOfNotes contentsList = new(Globals.path, Globals.file);
- /*TEST MAIN*/         Console.WriteLine("TEST MAIN Obiekt ListOfNotes : ",contentsList);
+ /*TEST MAIN*/     //    Console.WriteLine("TEST MAIN Obiekt ListOfNotes : ",contentsList);
             string controler = "progress";
             do
             {
-                Console.WriteLine("_____________________________________________________________________________");
                 Console.WriteLine("*** NOTATKI z kursu Zostań programistą ASP .NET");
                 Console.WriteLine("*** Spis treści wg kolejnych lekcji :");
                 contentsList.ViewListOfNotes();
-                Console.WriteLine("*** Opcje : 1 Wyświetl notatkę ; 2 Napisz nową notatkę ; 3 Dodaj notatkę z pliku ; 4 in progress ; 5 in progress; 6 in progress ; 7 ZAKOŃCZ");
+                Console.WriteLine("\n*** OPCJE : 1-Wyświetl notatkę ; 2-Napisz nową notatkę ; 3-Dodaj notatkę z pliku ; 4..7-in progress ; 0-ZAKOŃCZ");
                 // Opcje do wykonania : 1 Wyświetl notatkę ; 2 Pisz nową ; 3 Dodaj z pliku ; 4 Usuń notatkę ; 5 Wyczyść notatkę ;
                 // 6 Dopisz na końcu notatki ; 7 Dopisz na początku notatki ; 0 Zakończ
-                Console.WriteLine("*** Wybierz nr opcji z listy powyżej :");
+                Console.Write("*** Wybierz nr opcji : ");
                 //int.TryParse(Console.ReadLine(), out int chosenNr);
                 string chosenNr = Console.ReadLine();
                 switch (chosenNr)
                 {
                     case "1":   // Wyswietl notatke z listy
-                        Console.WriteLine("*** Podaj nr pozycji z powyższego spisu lekcji:");
+                        Console.Write("*** Podaj nr lekcji : ");
                         // zamiana ReadLine na obiekt typu Note - wywołanie metody ListOfNotes.ViewNote(nr_lekcji_ze_spisu)
                         // a ta utworzy obiekt Note
                         chosenNr = Console.ReadLine();
+                        Console.WriteLine(">>> Zawartość notatki :");
                         contentsList.ViewNote(chosenNr);
+                        Console.WriteLine("\nEnter aby kontynuować do menu głównego.");
+                        Console.ReadLine();
                         break;
                     case "2":  // nowa notatka z konsoli
                                // nowy obiekt klasy Note
@@ -62,7 +64,12 @@
                             Console.ReadKey();
                             controler = "exit";
                             break;
+                    default:
+                        Console.WriteLine("KONIEC.");
+                        controler = "exit";
+                        break;
                 }
+                Console.WriteLine("_____________________________________________________________________________");
             }
             while (controler != "exit");
            

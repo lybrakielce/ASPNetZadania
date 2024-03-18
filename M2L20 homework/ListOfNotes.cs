@@ -30,8 +30,8 @@ namespace M2L20_homework
             int i;
             for (i = 1; i <= NotesList.Count;i++)
             {
- /*TEST */               Console.WriteLine($"TEST ViewListOfNotes NotesList.Count = {NotesList.Count}");
-                Console.WriteLine($"TEST ViewListOfNotes i = {i}");
+ /*TEST */              // Console.WriteLine($"TEST ViewListOfNotes NotesList.Count = {NotesList.Count}");
+                //Console.WriteLine($"TEST ViewListOfNotes i = {i}");
                 Console.WriteLine($"{i}. {NotesList[i-1].NoteTitle()}");
             }
             return NotesList;
@@ -40,7 +40,7 @@ namespace M2L20_homework
         public void ViewNote(string stringNumber)   // wyswietla wybraną notatke (nr na liście) w konsoli
         {
             int.TryParse(stringNumber, out int numberOnList);
- /*TEST ViewNote */     Console.WriteLine("TEST ViewNote Obiekt Note:  ", NotesList[numberOnList - 1]);
+ /*TEST ViewNote */    // Console.WriteLine("TEST ViewNote Obiekt Note:  ", NotesList[numberOnList - 1]);
             NotesList[numberOnList - 1].ViewNoteTxt();
         }
         public void ReadFile()  // wczytanie pliku txt listy i wpisanie danych do obiektów listy
@@ -48,7 +48,7 @@ namespace M2L20_homework
         Start:
             try
             {
-  /* TEST ReadFile */Console.WriteLine("TEST OBIEKT LISTY***** pathAndFile = {0}", pathAndFile);
+  /* TEST ReadFile *///Console.WriteLine("TEST OBIEKT LISTY***** pathAndFile = {0}", pathAndFile);
                 if(File.Exists(pathAndFile))
                 {
                     using (StreamReader r = File.OpenText(pathAndFile)) //using (StreamReader r = new(listFile))     //StreamReader r = new StreamReader(listFile);
@@ -57,7 +57,7 @@ namespace M2L20_homework
                         int lineNr = 1;
                         line = r.ReadLine();
                         /* TEST ReadFile*/
-                        Console.WriteLine("TEST OBIEKT LISTY****** wczytywanie linii nr {1} line : {0}", line, lineNr);
+                        //Console.WriteLine("TEST OBIEKT LISTY****** wczytywanie linii nr {1} line : {0}", line, lineNr);
                         if (line == null)           // spr. czy pierwsza linia jest pusta (pusty plik)
                         {
                             // uzupełnianie pustego pliku listy txt zaczynając od tworzenia nowej notatki
@@ -90,7 +90,7 @@ namespace M2L20_homework
                                 {
                                     /* notatka z pliku */
                                     /*TEST */
-                                    Console.WriteLine("TEST ReadFile URUCHAMIAM AddFileNote");
+                                   // Console.WriteLine("TEST ReadFile URUCHAMIAM AddFileNote");
                                     AddFileNote();
                                     // NAZWA pliku
                                     // tytuł notatki w pierwszej linii pliku notatki
@@ -148,17 +148,17 @@ namespace M2L20_homework
         public void AddNote(Note NoteToAdd) // dodanie obiektu nowej notatki z konsoli do obiektu listy (do listy w obiekcie ListOfNotes)
         {
 /*TEST A */
-            Console.WriteLine("***TEST A ***ListOfNotes.AddNote*** ");
-            Console.WriteLine("TEST A NoteToAdd.notePath = {0} ", NoteToAdd.notePath);
-            Console.WriteLine("TEST A  ListPath = {0} ", ListPath);
+           // Console.WriteLine("***TEST A ***ListOfNotes.AddNote*** ");
+           // Console.WriteLine("TEST A NoteToAdd.notePath = {0} ", NoteToAdd.notePath);
+           // Console.WriteLine("TEST A  ListPath = {0} ", ListPath);
             NoteToAdd.notePath ??= ListPath;  //if (NoteToAdd.notePath == null) { NoteToAdd.notePath = ListPath; }
             NotesList.Add(NoteToAdd);
-            Console.WriteLine("TEST A ZA NotesList.Add ");
+            //Console.WriteLine("TEST A ZA NotesList.Add ");
             // początkowe założenia :
             // dodajemy notatke pobraną z ekranu , zapisaną do obiektu Note
             // treść notatki tylko w pliku txt
             //NotesList.Sort();
-            Console.WriteLine("TEST A ZA NotesList.Sort ");
+           // Console.WriteLine("TEST A ZA NotesList.Sort ");
             //Trzeba jakoś zrobić podział na notatki z konkretnych modułów, może oddzielne listy ???????????????????
         }
         //------------------------------------------------------------------------------------------------
@@ -166,18 +166,18 @@ namespace M2L20_homework
         {
             Console.WriteLine("Wpisz nazwę pliku : ");
             string noteTxtFile = Console.ReadLine();
-  /*TEST*/  Console.WriteLine("TEST AddFileNote wczytany noteFile = ", noteTxtFile);
+  /*TEST*/ // Console.WriteLine("TEST AddFileNote wczytany noteFile = ", noteTxtFile);
             // nowy obiekt note
             Note toAdd = new(noteTxtFile);
             //noteFile = noteFile[0..noteFile.IndexOf('.')];
             
             // wpisac note do obiektu listy 
-  /*TEST*/          Console.WriteLine("TEST AddFileNote okrojony noteFile = ", noteTxtFile);
+  /*TEST*/     //    Console.WriteLine("TEST AddFileNote okrojony noteFile = ", noteTxtFile);
             AddNote(toAdd);
-            Console.WriteLine("TEST AddFileNote ZA AddNote");
+           // Console.WriteLine("TEST AddFileNote ZA AddNote");
             // wpisac pozycje do pliku txt listy - zapisac obiekt listy do pliku
             SaveList();
-            Console.WriteLine("TEST AddFileNote ZA SaveList");
+           // Console.WriteLine("TEST AddFileNote ZA SaveList");
         }
 
         public void SaveList()  // zapisuje listę do pliku txt

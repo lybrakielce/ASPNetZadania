@@ -28,7 +28,7 @@ namespace M2L20_homework
             title = titleGiven;
             noteFile = fileName;        // bez rozszerzenia .txt
  /*TEST konstruktor Note 2PAR*/
-            Console.WriteLine($"TEST konstruktor Note 2 PAR. noteFile = {noteFile}");
+            //Console.WriteLine($"TEST konstruktor Note 2 PAR. noteFile = {noteFile}");
             notePath = Globals.path;
         }
         
@@ -40,11 +40,11 @@ namespace M2L20_homework
             title = consoleTitle;
             noteFile = "M" + mod + "L" + less;
   /*TEST konstruktor Note 3 PAR*/
-            Console.WriteLine($"TEST konstruktor Note 3 PAR fileName = {noteFile}");
+           // Console.WriteLine($"TEST konstruktor Note 3 PAR fileName = {noteFile}");
           
             notePath = Globals.path;
         }
-/* in progress*/
+
         public Note(string file)  // obiekt z pliku txt  
         {
             module = file[(file.IndexOf('M')+1) ..];    // module = fileName.Substring(1, fileName.IndexOf('L')-1);  
@@ -56,11 +56,11 @@ namespace M2L20_homework
             title = r.ReadLine();
  
             /* TEST kontruktor Note */
-            Console.WriteLine($"TEST kontruktor Note  title = {title}");
+           // Console.WriteLine($"TEST kontruktor Note  title = {title}");
             r.Close();
             noteFile = file[0..file.IndexOf('.')];        // bez rozszerzenia .txt
 /*TEST konstruktor Note 1 PAR*/
-            Console.WriteLine($"TEST konstruktor Note 1 PAR fileName = {noteFile}");
+           // Console.WriteLine($"TEST konstruktor Note 1 PAR fileName = {noteFile}");
             notePath = Globals.path;
         }
             public void SaveNote(string path)   // z konsoli do pliku txt
@@ -96,8 +96,8 @@ namespace M2L20_homework
         public void ViewNoteTxt()   // wyswietla w konsoli notatke z pliku txt na zlecenie ListOfNotes.ViewNote
         {
             int count = 0;
-            Console.WriteLine($"TEST ViewNoteTxt notePath = {notePath}");
-            Console.WriteLine($"TEST ViewNoteTxt noteFile = {noteFile}");
+            //Console.WriteLine($"TEST ViewNoteTxt notePath = {notePath}");
+           // Console.WriteLine($"TEST ViewNoteTxt noteFile = {noteFile}");
             //using (StreamReader r = new(notePath+noteFile+".txt"))
             try
             {
