@@ -21,7 +21,8 @@ namespace M2L20_homework
         public ListOfNotes(string path, string file)    // obiekt listy powstaje z pliku txt
         {   ListPath = path;
             listFile = file;    // nazwa pełna z rozszerzeniem .txt
-            pathAndFile = path + file;            NotesList = [];   //pusta lista ; NotesList = new List<Note>();
+            pathAndFile = path + file;           
+            NotesList = [];   //pusta lista ; NotesList = new List<Note>();
             // wczytaj z pliku :
             ReadFile();     // wypełnia listę obiektami na podstawie pliku txt
         }
@@ -32,7 +33,7 @@ namespace M2L20_homework
             {
  /*TEST */              // Console.WriteLine($"TEST ViewListOfNotes NotesList.Count = {NotesList.Count}");
                 //Console.WriteLine($"TEST ViewListOfNotes i = {i}");
-                Console.WriteLine($"{i}. {NotesList[i-1].NoteTitle()}");
+                Console.WriteLine($"{i}. {NotesList[i-1].NoteTitle()} *** {NotesList[i - 1].noteFile}.txt");
             }
             return NotesList;
         }
@@ -48,7 +49,7 @@ namespace M2L20_homework
         Start:
             try
             {
-  /* TEST ReadFile *///Console.WriteLine("TEST OBIEKT LISTY***** pathAndFile = {0}", pathAndFile);
+                    /* TEST ReadFile *///Console.WriteLine("TEST OBIEKT LISTY***** pathAndFile = {0}", pathAndFile);
                 if(File.Exists(pathAndFile))
                 {
                     using (StreamReader r = File.OpenText(pathAndFile)) //using (StreamReader r = new(listFile))     //StreamReader r = new StreamReader(listFile);
@@ -187,8 +188,8 @@ namespace M2L20_homework
             {
                 string line = NotesList[i].noteFile+ ".txt" + "***" + NotesList[i].NoteTitle();
                 outputFile.WriteLine(line);
- /*TEST 5*/               Console.WriteLine("******TEST5 SaveList WPISANO line DO {0}{1}", ListPath,listFile);
-                Console.WriteLine("****** line = {0}", line);
+ /*TEST 5*/             //  Console.WriteLine("******TEST5 SaveList WPISANO line DO {0}{1}", ListPath,listFile);
+              //  Console.WriteLine("****** line = {0}", line);
             }
             outputFile.Close();
         }

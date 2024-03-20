@@ -66,14 +66,14 @@ namespace M2L20_homework
             public void SaveNote(string path)   // z konsoli do pliku txt
         {
             string readConsole;
-            noteFile = "M" + module + "L" + lesson + ".txt";
+            noteFile = "M" + module + "L" + lesson ;
             notePath = path; // zapis w obiekcie ścieżki do pliku txt
-            Console.Write($"Zapis pliku {noteFile} do folderu : ");
+            Console.Write($"Zapis pliku {noteFile}.txt do folderu : ");
             //Console.Read();
             Console.WriteLine($"{notePath}");
             Console.WriteLine("Treść :");
             string textCheck;
-            StreamWriter outputFile = new(Path.Combine(path, noteFile));   //StreamWriter outputFile = new StreamWriter(Path.Combine(path, noteFile));
+            StreamWriter outputFile = new(Path.Combine(path, noteFile+".txt"));   //StreamWriter outputFile = new StreamWriter(Path.Combine(path, noteFile));
             while (true)
             {
                 readConsole = Console.ReadLine();
@@ -85,7 +85,7 @@ namespace M2L20_homework
                 else
                 {
                     outputFile.Close();
-                    Console.WriteLine($"Notatka została zapisana w pliku : {notePath}{noteFile}");
+                    Console.WriteLine($"Notatka została zapisana w pliku : {notePath}{noteFile}.txt");
                     Console.ReadKey();
                     break;
                 }
