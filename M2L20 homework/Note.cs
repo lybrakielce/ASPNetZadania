@@ -32,9 +32,6 @@ namespace M2L20_homework
             lesson = less; 
             title = consoleTitle;
             noteFile = "M" + mod + "L" + less;
-  /*TEST konstruktor Note 3 PAR*/
-           // Console.WriteLine($"TEST konstruktor Note 3 PAR fileName = {noteFile}");
-          
             notePath = Globals.path;
         }
         public Note(string file)  // obiekt z pliku txt  
