@@ -14,7 +14,6 @@ namespace M2L20_homework
         public string ListPath { get; }
         private readonly string listFile;
         private readonly string pathAndFile;
-
         public List<Note> NotesList { get; }
         public ListOfNotes(string path, string file)    // obiekt listy powstaje z pliku txt
         {   ListPath = path;
@@ -32,7 +31,6 @@ namespace M2L20_homework
             }
             return NotesList;
         }
-
         public void ViewNote(string stringNumber)   // wyswietla wybraną notatke (nr na liście) w konsoli
         {
             int.TryParse(stringNumber, out int numberOnList);
@@ -156,8 +154,5 @@ namespace M2L20_homework
             this.AddNote(newNote);
             this.SaveList();        
         }
-    }
-
-
-         
+    }       
 }
