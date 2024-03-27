@@ -6,7 +6,7 @@ namespace M2L20_homework
     {
         static void Main()    
         {
-                        // Klasa (obiekt) ListOfNotes wczytuje plik txt z listą notatek
+                        // Klasa (obiekt) ListOfNotes wczytuje plik txt z listą notatek LUB tworzy nowy jeśli brak
             ListOfNotes contentsList = new(Globals.path, Globals.file);
             string controler = "progress";
             string nrtxt = "";
@@ -50,9 +50,6 @@ namespace M2L20_homework
                         Int32.TryParse(nrtxt, out nr); 
                         contentsList.RemoveNote(contentsList.NotesList[nr - 1]);
                         break;
-                    //case 5    Dopisz na początku notatki 
-                    //case 6    Dopisz na końcu notatki 
-                    //case 7    Wyczyść notatkę  
                     case "0":
                          Console.WriteLine("KONIEC. Naciśnij enter.");
                             Console.ReadKey();
