@@ -36,7 +36,6 @@ namespace M2L20_homework
         public void ViewNote(string stringNumber)   // wyswietla wybraną notatke (nr na liście) w konsoli
         {
             int.TryParse(stringNumber, out int numberOnList);
- /*TEST ViewNote */    // Console.WriteLine("TEST ViewNote Obiekt Note:  ", NotesList[numberOnList - 1]);
             NotesList[numberOnList - 1].ViewNoteTxt();
         }
         public void ReadFile()      // wczytanie pliku txt listy i wpisanie danych do obiektów listy
