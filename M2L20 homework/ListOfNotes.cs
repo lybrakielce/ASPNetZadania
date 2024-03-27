@@ -9,30 +9,25 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace M2L20_homework
 {
-    internal class ListOfNotes      // in progress - wczytać z pliku lub utworzyć plik ListOFNotes.txt
-    {   // nr porzadkowy, nazwa pliku, tytuł lekcji/notatki
-        // ZAINICJOWAĆ TWORZENIE OBIEKTÓW NOTE I WSTAWIĆ JE DO LISTY 
-        // format tekstu w ListOfNotes.txt : MxLy***Tytuł_lekcji
+    internal class ListOfNotes      
+    {                                   // format tekstu w ListOfNotes.txt : MxLy***Tytuł_lekcji
         public string ListPath { get; }
         private readonly string listFile;
         private readonly string pathAndFile;
 
-        private List<Note> NotesList { get; }
+        public List<Note> NotesList { get; }
         public ListOfNotes(string path, string file)    // obiekt listy powstaje z pliku txt
         {   ListPath = path;
-            listFile = file;    // nazwa pełna z rozszerzeniem .txt
+            listFile = file;                        // nazwa pełna z rozszerzeniem .txt
             pathAndFile = path + file;           
-            NotesList = [];   //pusta lista ; NotesList = new List<Note>();
-            // wczytaj z pliku :
-            ReadFile();     // wypełnia listę obiektami na podstawie pliku txt
+            NotesList = [];                         //pusta lista ; NotesList = new List<Note>();
+            ReadFile();                      // wypełnia listę obiektami na podstawie pliku txt
         }
         public List<Note> ViewListOfNotes()     // wyswietla tytuly notatek na liscie
         {
             int i;
             for (i = 1; i <= NotesList.Count;i++)
             {
- /*TEST */              // Console.WriteLine($"TEST ViewListOfNotes NotesList.Count = {NotesList.Count}");
-                //Console.WriteLine($"TEST ViewListOfNotes i = {i}");
                 Console.WriteLine($"{i}. {NotesList[i-1].NoteTitle()} *** {NotesList[i - 1].noteFile}.txt");
             }
             return NotesList;
@@ -44,7 +39,7 @@ namespace M2L20_homework
  /*TEST ViewNote */    // Console.WriteLine("TEST ViewNote Obiekt Note:  ", NotesList[numberOnList - 1]);
             NotesList[numberOnList - 1].ViewNoteTxt();
         }
-        public void ReadFile()  // wczytanie pliku txt listy i wpisanie danych do obiektów listy
+        public void ReadFile()      // wczytanie pliku txt listy i wpisanie danych do obiektów listy
         {
         Start:
             try
@@ -57,8 +52,7 @@ namespace M2L20_homework
                         string line = "";
                         int lineNr = 1;
                         line = r.ReadLine();
-                        /* TEST ReadFile*/
-                        //Console.WriteLine("TEST OBIEKT LISTY****** wczytywanie linii nr {1} line : {0}", line, lineNr);
+  /* TEST ReadFile*/                //Console.WriteLine("TEST OBIEKT LISTY****** wczytywanie linii nr {1} line : {0}", line, lineNr);
                         if (line == null)           // spr. czy pierwsza linia jest pusta (pusty plik)
                         {
                             // uzupełnianie pustego pliku listy txt zaczynając od tworzenia nowej notatki
@@ -116,13 +110,13 @@ namespace M2L20_homework
                             string noteFile = line[..line.IndexOf('.')];    //string noteFile = line.Substring(0, line.IndexOf("*"));
                                                                             // Console.WriteLine("TEST 3 noteFile = {0}",noteFile);                                       // wyciąga tytuł notatki z pliku txt :
                             string noteTitle = line[(line.IndexOf("*") + 3)..];
-                            //Console.WriteLine("TEST 3 noteTitle = {0}", noteTitle);
-                            // Console.WriteLine("TEST 3 lineNr = {0}", lineNr);
-                            // nowy obiekt Note
-                            // wstawic bezimienne nowe obiekty do List ???
+                                //Console.WriteLine("TEST 3 noteTitle = {0}", noteTitle);
+                                // Console.WriteLine("TEST 3 lineNr = {0}", lineNr);
+                                 // nowy obiekt Note
+                                // wstawic bezimienne nowe obiekty do List ???
                             NotesList.Add(new Note(noteFile, noteTitle));
                             lineNr++;
-                            // Console.WriteLine("TEST 3 lineNr++ = {0}", lineNr);
+                                // Console.WriteLine("TEST 3 lineNr++ = {0}", lineNr);
                         }
                         while ((line = r.ReadLine()) != null);
 
@@ -145,42 +139,21 @@ namespace M2L20_homework
             }
         End:;
         }
-   
         public void AddNote(Note NoteToAdd) // dodanie obiektu nowej notatki z konsoli do obiektu listy (do listy w obiekcie ListOfNotes)
         {
-/*TEST A */
-           // Console.WriteLine("***TEST A ***ListOfNotes.AddNote*** ");
-           // Console.WriteLine("TEST A NoteToAdd.notePath = {0} ", NoteToAdd.notePath);
-           // Console.WriteLine("TEST A  ListPath = {0} ", ListPath);
             NoteToAdd.notePath ??= ListPath;  //if (NoteToAdd.notePath == null) { NoteToAdd.notePath = ListPath; }
             NotesList.Add(NoteToAdd);
-            //Console.WriteLine("TEST A ZA NotesList.Add ");
-            // początkowe założenia :
-            // dodajemy notatke pobraną z ekranu , zapisaną do obiektu Note
-            // treść notatki tylko w pliku txt
-            //NotesList.Sort();
-           // Console.WriteLine("TEST A ZA NotesList.Sort ");
-            //Trzeba jakoś zrobić podział na notatki z konkretnych modułów, może oddzielne listy ???????????????????
+            Console.WriteLine(">>>>>>>>> Notatka dodana <<<<<<<<<<");
+            Console.ReadKey();
         }
-        //------------------------------------------------------------------------------------------------
-        public void AddFileNote() // wczytanie notatki z pliku txt podanego w konsoli
+        public void AddFileNote()   // wczytanie notatki z pliku txt podanego w konsoli
         {
             Console.WriteLine("Wpisz nazwę pliku : ");
             string noteTxtFile = Console.ReadLine();
-  /*TEST*/ // Console.WriteLine("TEST AddFileNote wczytany noteFile = ", noteTxtFile);
-            // nowy obiekt note
             Note toAdd = new(noteTxtFile);
-            //noteFile = noteFile[0..noteFile.IndexOf('.')];
-            
-            // wpisac note do obiektu listy 
-  /*TEST*/     //    Console.WriteLine("TEST AddFileNote okrojony noteFile = ", noteTxtFile);
             AddNote(toAdd);
-           // Console.WriteLine("TEST AddFileNote ZA AddNote");
-            // wpisac pozycje do pliku txt listy - zapisac obiekt listy do pliku
             SaveList();
-           // Console.WriteLine("TEST AddFileNote ZA SaveList");
         }
-
         public void SaveList()  // zapisuje listę do pliku txt
         {
             StreamWriter outputFile = new(Path.Combine(ListPath, listFile));
@@ -188,13 +161,14 @@ namespace M2L20_homework
             {
                 string line = NotesList[i].noteFile+ ".txt" + "***" + NotesList[i].NoteTitle();
                 outputFile.WriteLine(line);
- /*TEST 5*/             //  Console.WriteLine("******TEST5 SaveList WPISANO line DO {0}{1}", ListPath,listFile);
-              //  Console.WriteLine("****** line = {0}", line);
             }
             outputFile.Close();
         }
         public void RemoveNote(Note NoteToRemove) 
         {  NotesList.Remove(NoteToRemove);
+            Console.WriteLine(">>>>>>>> Notatka usunięta z programu. Plik usuń ręcznie. <<<<<<<<<<<<<<");
+            Console.WriteLine(">>>>> Press ENTER ... <<<<<<<<");
+            Console.ReadKey();
             SaveList();
         }
         public void WriteNoteConsole()  //tworzenie - pisanie notatki z konsoli
@@ -207,13 +181,10 @@ namespace M2L20_homework
             string newTitle = Console.ReadLine();
             Note newNote = new(moduleNr, lessonNr, newTitle); 
             Console.WriteLine("Wpisz treść notatki, aby zakończyć wpisz w nowej linii END .");
-            // ZAPIS kilku linii txt DO PLIKU
-            newNote.SaveNote(Globals.path);
-            //ZROBIONE: DODANIE nowej notatki DO LISTY notatek i zapisanie listy w PLIKU
+            newNote.SaveNote(Globals.path);     // ZAPIS kilku linii txt DO PLIKU
             this.AddNote(newNote);
-            this.SaveList();        // czy wpisuje *** ?
+            this.SaveList();        
         }
-
     }
 
 
