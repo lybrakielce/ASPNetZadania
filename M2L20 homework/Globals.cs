@@ -10,5 +10,6 @@ namespace M2L20_homework
     {
        public static string path = "E:\\Dominik\\Dominik_C#\\";
        public static string file = "ASPdotNet_Lista_Notatek.txt";
+       // format tekstu w ListOfNotes.txt : MxLy***Tytuł_lekcji
     }
 }

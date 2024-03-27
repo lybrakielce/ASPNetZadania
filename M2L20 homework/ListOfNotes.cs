@@ -10,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace M2L20_homework
 {
     internal class ListOfNotes      
-    {                                   // format tekstu w ListOfNotes.txt : MxLy***Tytuł_lekcji
+    {                                   
         public string ListPath { get; }
         private readonly string listFile;
         private readonly string pathAndFile;
@@ -44,7 +44,6 @@ namespace M2L20_homework
         Start:
             try
             {
-                    /* TEST ReadFile *///Console.WriteLine("TEST OBIEKT LISTY***** pathAndFile = {0}", pathAndFile);
                 if(File.Exists(pathAndFile))
                 {
                     using (StreamReader r = File.OpenText(pathAndFile)) //using (StreamReader r = new(listFile))     //StreamReader r = new StreamReader(listFile);
@@ -52,49 +51,14 @@ namespace M2L20_homework
                         string line = "";
                         int lineNr = 1;
                         line = r.ReadLine();
-  /* TEST ReadFile*/                //Console.WriteLine("TEST OBIEKT LISTY****** wczytywanie linii nr {1} line : {0}", line, lineNr);
                         if (line == null)           // spr. czy pierwsza linia jest pusta (pusty plik)
                         {
-                            // uzupełnianie pustego pliku listy txt zaczynając od tworzenia nowej notatki
-                            // obiekt notatki 
-                            // zapis pliku notatki 
-                            // wpis do obiektu listy
-                            // zapis pliku txt listy (czy bedzie zonk jeżeli plik już istnieje ??????????????? )
-                            // 2 metody dla nowej notatki : jedna z konsoli , druga z pliku txt
                             Console.WriteLine("Plik listy pusty. Czy chcesz utworzyć listę ? T/N");
                             char choice = Convert.ToChar(Console.ReadLine());
-                            /* test 1  */ //Console.WriteLine("TEST 1 choice readLine = {0}", choice);
                             choice = char.ToUpper(choice);
                             if (choice.Equals('T'))
                             {
-                                // TWORZENIE LISTY
-                                //Console.WriteLine("TEST 2 choice readLine = {0}", choice);
-                                Console.WriteLine("1 - Pisz nową notatkę.   2 - Wczytaj notatkę z pliku.");
-                                // WYBÓR PROCEDURY
-                                choice = Convert.ToChar(Console.ReadLine());
-                                /* test 2*/                // Console.WriteLine ("TEST 2 choice readLine = {0}",choice);
-                                Console.ReadLine();
-
-                                if (choice.Equals('1'))
-                                /*PROCEDURA 1*/
-                                {
-                                    WriteNoteConsole();
-                                }
-                                else if (choice.Equals('2'))
-                                /*PROCEDURA 2*/
-                                {
-                                    /* notatka z pliku */
-                                    /*TEST */
-                                   // Console.WriteLine("TEST ReadFile URUCHAMIAM AddFileNote");
-                                    AddFileNote();
-                                    // NAZWA pliku
-                                    // tytuł notatki w pierwszej linii pliku notatki
-                                    // spr czy plik istnieje i czy nie jest pusty, ewentualnie wtedy zapytać czy pisać nową i powrót do choice 1
-                                    // jeśli plik jest ok to zrób nowy obiekt Note(filename,title)
-                                    // dodać obiekt typu Note do obiektu typu ListOfNotes
-                                    // zapisać plik txt listy
-                                }
-                                //{ WriteListFile(this); }    
+                                NewListFile();
                             }
                             else
                             {
@@ -105,39 +69,47 @@ namespace M2L20_homework
                         }
                         do
                         {
-                            /* TEST 3*/          //Console.WriteLine("TEST 3 do while - wyciąga nazwę pliku notatki");
-                                                 // wyciąga nazwę pliku notatki bez rozszerzenia .txt (potrzebne do pól Note)
-                            string noteFile = line[..line.IndexOf('.')];    //string noteFile = line.Substring(0, line.IndexOf("*"));
-                                                                            // Console.WriteLine("TEST 3 noteFile = {0}",noteFile);                                       // wyciąga tytuł notatki z pliku txt :
+                            string noteFile = line[..line.IndexOf('.')];    
                             string noteTitle = line[(line.IndexOf("*") + 3)..];
-                                //Console.WriteLine("TEST 3 noteTitle = {0}", noteTitle);
-                                // Console.WriteLine("TEST 3 lineNr = {0}", lineNr);
-                                 // nowy obiekt Note
-                                // wstawic bezimienne nowe obiekty do List ???
                             NotesList.Add(new Note(noteFile, noteTitle));
                             lineNr++;
-                                // Console.WriteLine("TEST 3 lineNr++ = {0}", lineNr);
                         }
                         while ((line = r.ReadLine()) != null);
-
                     }
                 }
                 else
                 {
-
+                    Console.WriteLine("******** Brak pliku listy.");
+                    NewListFile();      // PROCEDURA TWORZENIA NOWEJ LISTY
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Błąd pliku :");
+                Console.WriteLine("******** Błąd pliku :");
                 Console.WriteLine(e.Message);
-                Console.WriteLine("Tworzę plik listy : {0}", listFile);
+                Console.WriteLine("******** Tworzę plik listy : {0}", listFile);
                 this.SaveList();
-/* TEST 4*/ //Console.WriteLine("*****TEST_4 ZA SAVELIST");
                 Console.ReadLine();
                 goto Start;
             }
         End:;
+        }
+        public void NewListFile()
+        {
+            Console.WriteLine("1 - Pisz nową notatkę.   2 - Wczytaj notatkę z pliku.");
+            // WYBÓR PROCEDURY
+            char choice = Convert.ToChar(Console.ReadLine());
+            Console.ReadLine();
+            if (choice.Equals('1'))
+            /*PROCEDURA 1*/
+            {
+                WriteNoteConsole();
+            }
+            else if (choice.Equals('2'))
+            /*PROCEDURA 2*/
+            {
+                AddFileNote();
+            }
         }
         public void AddNote(Note NoteToAdd) // dodanie obiektu nowej notatki z konsoli do obiektu listy (do listy w obiekcie ListOfNotes)
         {
