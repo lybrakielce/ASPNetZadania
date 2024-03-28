@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 
 namespace M2L20_homework
 {
-    internal class Note
+    internal class Note : IComparable<Note>
     {
         string module;
         string lesson;
         string title;
         public string notePath;
         public string noteFile;     // nazwa bez rozszerzenia
+        public int CompareTo(Note note_)        // metoda niezbedna do sortowania, wskazuje że ma sortować wg noteFile
+
+        {
+            return this.noteFile.CompareTo(note_.noteFile);
+        }
         public string NoteTitle() 
         {
             return title;
@@ -53,7 +58,6 @@ namespace M2L20_homework
             noteFile = "M" + module + "L" + lesson ;
             notePath = path; // zapis w obiekcie ścieżki do pliku txt
             Console.Write($"Zapis pliku {noteFile}.txt do folderu : ");
-            //Console.Read();
             Console.WriteLine($"{notePath}");
             Console.WriteLine("Treść :");
             string textCheck;
@@ -87,6 +91,7 @@ namespace M2L20_homework
                     while ((line = r.ReadLine()) != null)
                     {
                         Console.WriteLine(line);
+                        count++;
                         if (count == 10)    // pauza co 10 linii
                         {
                             Console.ReadLine();

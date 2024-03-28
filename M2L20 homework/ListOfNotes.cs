@@ -112,6 +112,8 @@ namespace M2L20_homework
         {
             NoteToAdd.notePath ??= ListPath;  //if (NoteToAdd.notePath == null) { NoteToAdd.notePath = ListPath; }
             NotesList.Add(NoteToAdd);
+            // ZROBIC SORTOWANIE
+            NotesList.Sort();
             Console.WriteLine(">>>>>>>>> Notatka dodana <<<<<<<<<<");
             Console.ReadKey();
         }
